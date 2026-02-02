@@ -68,6 +68,14 @@ Example: `index.html?text=HELLO&size=50&y=300`
 
 The FuBK (Fernseh-Betriebsuntersuchungskarte) test pattern was widely used in European television broadcasting. YLE (Finnish Broadcasting Company) used this pattern with their channel identification on TV2 from 1985.
 
-## License
+## Credits & License
 
-The FuBK test pattern is in the public domain. The VCR OSD Mono font is freeware.
+### Test Card Image
+Based on [FuBK_testcard_vectorized.svg](https://commons.wikimedia.org/wiki/File:FuBK_testcard_vectorized.svg) by [Rotkaeppchen68](https://commons.wikimedia.org/wiki/User:Rotkaeppchen68) from Wikimedia Commons.
+
+Licensed under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). Changes made: added customizable text overlay, embedded font, and interactive controls for end users.
+
+This project is therefore also licensed under **CC BY-SA 3.0**.
+
+### VCR OSD Mono Font
+Font by [Riciery Leal](https://www.dafont.com/vcr-osd-mono.font), 100% free for personal and commercial use.
