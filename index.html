@@ -97,8 +97,8 @@
             </div>
             <div class="control-group">
                 <span>Lataa PNG:nä:</span>
-                <button id="download16x9" type="button">16:9</button>
                 <button id="download4x3" type="button">4:3</button>
+                <button id="download16x9" type="button">16:9</button>
             </div>
         </div>
 
@@ -1442,9 +1442,9 @@ function reset() {
     saveToUrl();
 }
 
-function downloadPng(width, height, filename) {
-    const svg = document.querySelector('svg');
-    const svgData = new XMLSerializer().serializeToString(svg);
+function downloadPng(width, height, filename, fillMode) {
+    const svgEl = document.querySelector('svg');
+    const svgData = new XMLSerializer().serializeToString(svgEl);
     const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
     const url = URL.createObjectURL(svgBlob);
 
@@ -1459,24 +1459,42 @@ function downloadPng(width, height, filename) {
         ctx.fillStyle = '#000000';
         ctx.fillRect(0, 0, width, height);
 
-        // Calculate scaling to fit SVG centered in target aspect ratio
+        // Calculate scaling
         const svgAspect = 768 / 576; // 4:3
         const targetAspect = width / height;
 
         let drawWidth, drawHeight, offsetX, offsetY;
 
-        if (targetAspect > svgAspect) {
-            // Target is wider - fit by height, center horizontally
-            drawHeight = height;
-            drawWidth = height * svgAspect;
-            offsetX = (width - drawWidth) / 2;
-            offsetY = 0;
+        if (fillMode === 'fill') {
+            // Fill mode: zoom to fill entire canvas, crop edges
+            if (targetAspect > svgAspect) {
+                // Target is wider - fit by width, crop top/bottom
+                drawWidth = width;
+                drawHeight = width / svgAspect;
+                offsetX = 0;
+                offsetY = (height - drawHeight) / 2;
+            } else {
+                // Target is taller - fit by height, crop sides
+                drawHeight = height;
+                drawWidth = height * svgAspect;
+                offsetX = (width - drawWidth) / 2;
+                offsetY = 0;
+            }
         } else {
-            // Target is taller - fit by width, center vertically
-            drawWidth = width;
-            drawHeight = width / svgAspect;
-            offsetX = 0;
-            offsetY = (height - drawHeight) / 2;
+            // Fit mode: fit entire image, letterbox if needed
+            if (targetAspect > svgAspect) {
+                // Target is wider - fit by height, center horizontally
+                drawHeight = height;
+                drawWidth = height * svgAspect;
+                offsetX = (width - drawWidth) / 2;
+                offsetY = 0;
+            } else {
+                // Target is taller - fit by width, center vertically
+                drawWidth = width;
+                drawHeight = width / svgAspect;
+                offsetX = 0;
+                offsetY = (height - drawHeight) / 2;
+            }
         }
 
         ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
@@ -1512,16 +1530,16 @@ yPositionInput.addEventListener('input', function() {
 resetBtn.addEventListener('click', reset);
 
 // Download buttons: 4K resolutions
-// 16:9 = 3840x2160
 // 4:3 = 2880x2160 (same height as 4K)
-download16x9.addEventListener('click', function() {
-    const text = textInput.value.replace(/\s+/g, '');
-    downloadPng(3840, 2160, 'testikuva-' + text + '-16x9.png');
-});
-
+// 16:9 = 3840x2160 (zoomed/cropped to fill)
 download4x3.addEventListener('click', function() {
     const text = textInput.value.replace(/\s+/g, '');
-    downloadPng(2880, 2160, 'testikuva-' + text + '-4x3.png');
+    downloadPng(2880, 2160, 'testikuva-' + text + '-4x3.png', 'fit');
+});
+
+download16x9.addEventListener('click', function() {
+    const text = textInput.value.replace(/\s+/g, '');
+    downloadPng(3840, 2160, 'testikuva-' + text + '-16x9.png', 'fill');
 });
 
 // Load state from URL on page load
