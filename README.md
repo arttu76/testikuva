@@ -19,14 +19,18 @@ testikuva/
 ├── template.html     # HTML template with CSS and placeholders
 ├── script.js         # JavaScript for interactivity and URL state
 ├── build.sh          # Build script to generate index.html
-├── index.html        # Generated output (run build.sh to create)
+├── index.html        # Ready-to-use output (included in repo)
 ├── README.md         # This file
 └── CLAUDE.md         # Development context for Claude Code
 ```
 
-## Building
+## Quick Start
 
-Run the build script to generate `index.html`:
+`index.html` is included in the repository - just open it in a browser. No build step required.
+
+## Building (optional)
+
+If you modify the source files, run the build script to regenerate `index.html`:
 
 ```bash
 ./build.sh
