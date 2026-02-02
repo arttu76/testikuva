@@ -1,5 +1,6 @@
-# Generated file (rebuild with ./build.sh)
+# Generated files
 index.html
+*.png
 
 # macOS
 .DS_Store
