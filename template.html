@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tee oma testikuva</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            background: #333;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+        }
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .controls {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        input[type="text"] {
+            font-size: 18px;
+            padding: 10px;
+            width: 140px;
+            border-radius: 5px;
+        }
+        input[type="number"] {
+            font-size: 18px;
+            padding: 10px;
+            width: 60px;
+            border-radius: 5px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .svg-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 0;
+            overflow: hidden;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+            max-width: 95vw;
+            display: block;
+            filter: drop-shadow(5px 5px 25px rgba(0,0,0,0.5));
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <div class="control-group">
+                <label for="textInput">Teksti:</label>
+                <input type="text" id="textInput" value="YLE     TV2">
+            </div>
+            <div class="control-group">
+                <label for="fontSizeInput">Koko:</label>
+                <input type="number" id="fontSizeInput" value="41" min="10" max="100">
+            </div>
+            <div class="control-group">
+                <label for="yPositionInput">Y:</label>
+                <input type="number" id="yPositionInput" value="325" min="0" max="576">
+            </div>
+            <div class="control-group">
+                <button id="resetBtn" type="button">Palauta vakioarvot</button>
+            </div>
+        </div>
+
+        <div class="svg-container">
+{{SVG_CONTENT}}
+        </div>
+
+    </div>
+    <script>
+{{JS_CONTENT}}
+    </script>
+</body>
+</html>

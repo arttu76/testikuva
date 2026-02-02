@@ -1,0 +1,10 @@
+# Generated file (rebuild with ./build.sh)
+index.html
+
+# macOS
+.DS_Store
+
+# Editor
+*.swp
+*.swo
+*~
