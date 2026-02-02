@@ -1,6 +1,9 @@
 # Generated files
 *.png
 
+# Dot-directories
+.*/
+
 # macOS
 .DS_Store
 
