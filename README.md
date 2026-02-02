@@ -71,7 +71,7 @@ The FuBK (Fernseh-Betriebsuntersuchungskarte) test pattern was widely used in Eu
 ## Credits & License
 
 ### Test Card Image
-Based on [FuBK_testcard_vectorized.svg](https://commons.wikimedia.org/wiki/File:FuBK_testcard_vectorized.svg) by [Rotkaeppchen68](https://commons.wikimedia.org/wiki/User:Rotkaeppchen68) from Wikimedia Commons.
+Based on [FuBK_testcard_vectorized.svg](https://commons.wikimedia.org/wiki/File:FuBK_testcard_vectorized.svg) by Rotkaeppchen68 from Wikimedia Commons.
 
 Licensed under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). Changes made: added customizable text overlay, embedded font, and interactive controls for end users.
 
