@@ -1,5 +1,7 @@
 # Tee oma testikuva
 
+**[Try it live](https://arttu76.github.io/testikuva/)**
+
 Interactive Finnish TV test card (testikuva) generator based on the classic FuBK test pattern used by YLE TV2 in the 1980s.
 
 ## Features
